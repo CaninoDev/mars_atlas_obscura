@@ -1,13 +1,28 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 )
 
-func handleQuery(w http.ResponseWriter, r *http.Request) {
-	message := "This is the backend server"
+type Message struct {
+	Text string
+}
 
-	w.Write([]byte(message))
+func handleQuery(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
+	message := Message{"This is the backend server"}
+
+	res, err := json.Marshal(message)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(res)
+}
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }
 
 func main() {
