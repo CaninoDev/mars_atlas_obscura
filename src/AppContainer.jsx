@@ -18,6 +18,9 @@ class AppContainer extends Component {
   }
 
   onChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
 
   }
 
@@ -25,6 +28,10 @@ class AppContainer extends Component {
     return (
       <React.Fragment>
         <AppComponent onSubmit={this.onSubmit} onChange={this.onChange}/>
+        <div>
+          solDate: {this.state.solDate}<br/>
+          camera: {this.state.camera}<br/>
+        </div>
       </React.Fragment>
     )
   }
