@@ -14,6 +14,14 @@ class AppContainer extends Component {
   }
 
   onSubmit = e => {
+    e.preventDefault()
+
+    var url = "/api/v1?sol=" + this.state.sol + "&camera=" + this.state.camera
+    
+    fetch(url)
+      .then(response => response.json()
+      .then(response => console.log(response)))
+      .catch(error => console.error(error))
 
   }
 
