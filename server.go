@@ -5,22 +5,21 @@ import (
 	"net/http"
 )
 
-type Message struct {
-	Text string
-}
-
 func handleQuery(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
-	message := Message{"This is the backend server"}
 
-	res, err := json.Marshal(message)
+	// read the query from URL params
+	params := r.URL.Query()
+
+	response, err := json.Marshal(params)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(res)
+	w.Write(response)
 }
+
 func enableCors(w *http.ResponseWriter) {
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
 }
