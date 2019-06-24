@@ -9,14 +9,14 @@ const AppComponent = ({onChange, onSubmit}) => (
             <form onSubmit={onSubmit}>
                 <label>
                     Sol<br/>
-                    <input id="sol=date" type="number" name="solDate" onChange={onChange} />
+                    <input id="sol=date" type="number" name="sol" onChange={onChange} />
                 </label>
                 <br/>
                 <br />
                 <label>
                     Camera<br/>
                     <select name="camera" onChange={onChange}>
-                        <option value="fhaz" selected>Front Hazard Avoidance</option>
+                        <option value="fhaz">Front Hazard Avoidance</option>
                         <option value="rhaz">Rear Hazard Avoidance</option>
                         <option value="mast">Mast</option>
                         <option value="chemcam">Chemistry and Camera Comnplex</option>

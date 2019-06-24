@@ -6,7 +6,7 @@ class AppContainer extends Component {
     super(props)
 
     this.state = {
-      solDate: 0,
+      sol: null,
       camera: null
     }
     this.onSubmit = this.onSubmit.bind(this)
@@ -29,7 +29,7 @@ class AppContainer extends Component {
       <React.Fragment>
         <AppComponent onSubmit={this.onSubmit} onChange={this.onChange}/>
         <div>
-          solDate: {this.state.solDate}<br/>
+          sol: {this.state.sol}<br/>
           camera: {this.state.camera}<br/>
         </div>
       </React.Fragment>
