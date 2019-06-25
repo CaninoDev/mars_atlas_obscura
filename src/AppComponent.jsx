@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppComponent = ({onChange, onSubmit, disabled}) => (
+const AppComponent = ({onChange, onSubmit, maxSolDate}) => (
     <div>
         <h1>Mars Photo API</h1>
         <br/>
@@ -9,7 +9,8 @@ const AppComponent = ({onChange, onSubmit, disabled}) => (
             <form onSubmit={onSubmit}>
                 <label>
                     Sol<br/>
-                    <input id="sol=date" type="number" name="sol" onChange={onChange} />
+                    <input id="sol=date" type="number" name="sol" onChange={onChange} required min="1" max={maxSolDate
+                    }/>
                 </label>
                 <br/>
                 <br />
@@ -27,7 +28,7 @@ const AppComponent = ({onChange, onSubmit, disabled}) => (
                 </label>
                 <br />
                 <br />
-                <button type="submit" disabled={disabled}>Find Photos</button>
+                <button type="submit">Find Photos</button>
             </form>
         </div>
     </div>

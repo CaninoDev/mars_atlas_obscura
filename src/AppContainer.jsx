@@ -8,10 +8,20 @@ class AppContainer extends Component {
     this.state = {
       sol: "",
       camera: "fhaz",
-      images: null
+      images: null,
+      maxSolDate: null
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
+  }
+
+  componentDidMount() {
+    var url = "/api/v1/manifests"
+    fetch(url)
+      .then(response => response.json())
+      .then(response => this.setState({
+        maxSolDate: response.photo_manifest.max_sol
+      }))
   }
 
   onSubmit = e => {
@@ -41,14 +51,15 @@ class AppContainer extends Component {
   }
 
   render () {
-    const { sol, images } = this.state
-    const disabled = (sol !== "") ? false : true
+    const { sol, camera, images, maxSolDate } = this.state
+    //const disabled = (sol !== "" && maxSolDate != null) ? false : true
     return (
       <React.Fragment>
-        <AppComponent onSubmit={this.onSubmit} onChange={this.onChange} disabled={disabled}/>
+        <AppComponent onSubmit={this.onSubmit} onChange={this.onChange} maxSolDate={maxSolDate} />
         <div>
-          sol: {this.state.sol}<br/>
-          camera: {this.state.camera}<br/>
+          sol: {sol}<br/>
+          camera: {camera}<br/>
+          maxSolDate: {maxSolDate}
         </div>
         <ul>
           {images != null && this.renderList(images)}
