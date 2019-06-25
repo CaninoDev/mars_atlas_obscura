@@ -7,7 +7,8 @@ class AppContainer extends Component {
 
     this.state = {
       sol: "",
-      camera: "fhaz"
+      camera: "fhaz",
+      images: null
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -19,10 +20,11 @@ class AppContainer extends Component {
     var url = "/api/v1?sol=" + this.state.sol + "&camera=" + this.state.camera
     
     fetch(url)
-      .then(response => response.json()
-      .then(response => console.log(response)))
+      .then(response => response.json())
+      .then(response => this.setState({
+        images: response
+      }))
       .catch(error => console.error(error))
-
   }
 
   onChange = e => {
@@ -32,8 +34,15 @@ class AppContainer extends Component {
 
   }
 
+  renderList = data => {
+    return data.photos.map(image => (
+      <li key={image.id}>{image.img_src}</li>
+    ))
+  }
+
   render () {
-    const disabled = (this.state.sol !== "") ? false : true
+    const { sol, images } = this.state
+    const disabled = (sol !== "") ? false : true
     return (
       <React.Fragment>
         <AppComponent onSubmit={this.onSubmit} onChange={this.onChange} disabled={disabled}/>
@@ -41,6 +50,9 @@ class AppContainer extends Component {
           sol: {this.state.sol}<br/>
           camera: {this.state.camera}<br/>
         </div>
+        <ul>
+          {images != null && this.renderList(images)}
+        </ul>
       </React.Fragment>
     )
   }
