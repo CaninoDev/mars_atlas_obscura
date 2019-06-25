@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppComponent = ({onChange, onSubmit}) => (
+const AppComponent = ({onChange, onSubmit, disabled}) => (
     <div>
         <h1>Mars Photo API</h1>
         <br/>
@@ -27,7 +27,7 @@ const AppComponent = ({onChange, onSubmit}) => (
                 </label>
                 <br />
                 <br />
-                <button type="submit">Find Photos</button>
+                <button type="submit" disabled={disabled}>Find Photos</button>
             </form>
         </div>
     </div>

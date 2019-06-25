@@ -6,8 +6,8 @@ class AppContainer extends Component {
     super(props)
 
     this.state = {
-      sol: null,
-      camera: null
+      sol: "",
+      camera: "fhaz"
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -33,9 +33,10 @@ class AppContainer extends Component {
   }
 
   render () {
+    const disabled = (this.state.sol !== "") ? false : true
     return (
       <React.Fragment>
-        <AppComponent onSubmit={this.onSubmit} onChange={this.onChange}/>
+        <AppComponent onSubmit={this.onSubmit} onChange={this.onChange} disabled={disabled}/>
         <div>
           sol: {this.state.sol}<br/>
           camera: {this.state.camera}<br/>
