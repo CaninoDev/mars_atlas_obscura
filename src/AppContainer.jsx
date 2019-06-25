@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AppComponent from './AppComponent';
+import FormComponent from './FormComponent';
 
 class AppContainer extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class AppContainer extends Component {
     //const disabled = (sol !== "" && maxSolDate != null) ? false : true
     return (
       <React.Fragment>
-        <AppComponent onSubmit={this.onSubmit} onChange={this.onChange} maxSolDate={maxSolDate} />
+        <FormComponent onSubmit={this.onSubmit} onChange={this.onChange} maxSolDate={maxSolDate} />
         <div>
           sol: {sol}<br/>
           camera: {camera}<br/>

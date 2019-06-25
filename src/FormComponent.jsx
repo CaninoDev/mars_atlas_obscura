@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AppComponent = ({onChange, onSubmit, maxSolDate}) => (
+const FormComponent = ({onChange, onSubmit, maxSolDate}) => (
     <div>
         <h1>Mars Photo API</h1>
         <br/>
@@ -34,4 +34,4 @@ const AppComponent = ({onChange, onSubmit, maxSolDate}) => (
     </div>
 );
 
-export default AppComponent;
+export default FormComponent;
