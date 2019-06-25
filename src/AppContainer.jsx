@@ -16,7 +16,7 @@ class AppContainer extends Component {
   }
 
   componentDidMount() {
-    var url = "/api/v1/manifests"
+    var url = "/api/v2/manifests"
     fetch(url)
       .then(response => response.json())
       .then(response => this.setState({
@@ -27,13 +27,15 @@ class AppContainer extends Component {
   onSubmit = e => {
     e.preventDefault()
 
-    var url = "/api/v1?sol=" + this.state.sol + "&camera=" + this.state.camera
+    var url = "/api/v2/photos?sol=" + this.state.sol + "&camera=" + this.state.camera
     
     fetch(url)
       .then(response => response.json())
-      .then(response => this.setState({
-        images: response
-      }))
+      .then(response => {
+        this.setState({
+          images: response.photos
+        })
+      })
       .catch(error => console.error(error))
   }
 
@@ -45,14 +47,13 @@ class AppContainer extends Component {
   }
 
   renderList = data => {
-    return data.photos.map(image => (
+    return data.map(image => (
       <li key={image.id}>{image.img_src}</li>
     ))
   }
 
   render () {
     const { sol, camera, images, maxSolDate } = this.state
-    //const disabled = (sol !== "" && maxSolDate != null) ? false : true
     return (
       <React.Fragment>
         <FormComponent onSubmit={this.onSubmit} onChange={this.onChange} maxSolDate={maxSolDate} />

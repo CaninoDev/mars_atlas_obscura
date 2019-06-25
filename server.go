@@ -12,6 +12,7 @@ var httpClient = &http.Client{Timeout: 10 * time.Second}
 
 func handlePhotosQuery(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
+
 	// read the query from URL params
 	params := r.URL.Query()
 	response, err := queryCameraPhotos(&params)
@@ -89,8 +90,8 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 func main() {
-	http.HandleFunc("/api/v1/manifests", handleManifestsQuery)
-	http.HandleFunc("/api/v1/", handlePhotosQuery)
+	http.HandleFunc("/api/v2/manifests", handleManifestsQuery)
+	http.HandleFunc("/api/v2/photos", handlePhotosQuery)
 	if err := http.ListenAndServe(":3001", nil); err != nil {
 		panic(err)
 	}
