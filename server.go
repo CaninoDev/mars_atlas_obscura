@@ -10,11 +10,11 @@ import (
 
 var httpClient = &http.Client{Timeout: 10 * time.Second}
 
-func handleQuery(w http.ResponseWriter, r *http.Request) {
+func handlePhotosQuery(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	// read the query from URL params
 	params := r.URL.Query()
-	response, err := queryNASA(&params)
+	response, err := queryCameraPhotos(&params)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -23,7 +23,7 @@ func handleQuery(w http.ResponseWriter, r *http.Request) {
 	w.Write(response)
 }
 
-func queryNASA(p *url.Values) ([]byte, error) {
+func queryCameraPhotos(p *url.Values) ([]byte, error) {
 	u := url.URL{
 		Scheme: "http",
 		Host: "mars-photos.herokuapp.com",
@@ -57,7 +57,7 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 func main() {
-	http.HandleFunc("/api/v1/", handleQuery)
+	http.HandleFunc("/api/v1/", handlePhotosQuery)
 	if err := http.ListenAndServe(":3001", nil); err != nil {
 		panic(err)
 	}
