@@ -56,7 +56,7 @@ class AppContainer extends Component {
   }
 
   render () {
-    const { sol, camera, images, maxSolDate } = this.state
+    const { images, maxSolDate } = this.state
     return (
       <React.Fragment>
         <FormComponent onSubmit={this.onSubmit} onChange={this.onChange} maxSolDate={maxSolDate} />
