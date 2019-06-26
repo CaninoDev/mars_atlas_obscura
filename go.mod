@@ -1,4 +1,4 @@
-module mar_atlas_obscura
+module github.com/CaninoDev/mars_atlas_obscura
 
 go 1.12
 
