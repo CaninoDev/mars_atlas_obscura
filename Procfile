@@ -1,2 +1,2 @@
 backend: ./server
-web: npm start
+web: node app.js
