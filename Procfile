@@ -1,2 +1,2 @@
 backend: ./server
-web: yarn start
+web: npm start
