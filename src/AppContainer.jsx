@@ -60,11 +60,6 @@ class AppContainer extends Component {
     return (
       <React.Fragment>
         <FormComponent onSubmit={this.onSubmit} onChange={this.onChange} maxSolDate={maxSolDate} />
-        <div>
-          sol: {sol}<br/>
-          camera: {camera}<br/>
-          maxSolDate: {maxSolDate}
-        </div>
         <Grid container spacing={16}>
           {images != null && images.map((imageData => <ImageComponent key={imageData.id} data={imageData} /> ))}
         </Grid>
