@@ -90,8 +90,8 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 func main() {
-	http.HandleFunc("/api/v2/manifests", handleManifestsQuery)
-	http.HandleFunc("/api/v2/photos", handlePhotosQuery)
+	http.HandleFunc("/manifests", handleManifestsQuery)
+	http.HandleFunc("/photos", handlePhotosQuery)
 	if err := http.ListenAndServe(":5000", nil); err != nil {
 		panic(err)
 	}
