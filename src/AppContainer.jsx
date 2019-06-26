@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import FormComponent from './FormComponent';
+import ImageComponent from './ImageComponent';
+
+import Grid from '@material-ui/core/Grid';
 
 class AppContainer extends Component {
   constructor(props) {
@@ -62,9 +65,9 @@ class AppContainer extends Component {
           camera: {camera}<br/>
           maxSolDate: {maxSolDate}
         </div>
-        <ul>
-          {images != null && this.renderList(images)}
-        </ul>
+        <Grid container spacing={16}>
+          {images != null && images.map((imageData => <ImageComponent key={imageData.id} data={imageData} /> ))}
+        </Grid>
       </React.Fragment>
     )
   }
