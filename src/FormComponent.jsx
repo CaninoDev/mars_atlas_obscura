@@ -20,7 +20,7 @@ const FormComponent = ({onChange, onSubmit, maxSolDate}) => (
                         <option value="fhaz">Front Hazard Avoidance</option>
                         <option value="rhaz">Rear Hazard Avoidance</option>
                         <option value="mast">Mast</option>
-                        <option value="chemcam">Chemistry and Camera Comnplex</option>
+                        <option value="chemcam">Chemistry and Camera Complex</option>
                         <option value="mahli">Mars Hand Lens Imager</option>
                         <option value="mardi">Mars Descent Imager</option>
                         <option value="navcam">Navigation</option>

@@ -19,7 +19,7 @@ class AppContainer extends Component {
   }
 
   componentDidMount() {
-    var url = "/api/v2/manifests"
+    var url = "/api/manifests"
     fetch(url)
       .then(response => response.json())
       .then(response => this.setState({
@@ -30,7 +30,7 @@ class AppContainer extends Component {
   onSubmit = e => {
     e.preventDefault()
 
-    var url = "/api/v2/photos?sol=" + this.state.sol + "&camera=" + this.state.camera
+      var url = "/api/photos?sol=" + this.state.sol + "&camera=" + this.state.camera
     
     fetch(url)
       .then(response => response.json())
